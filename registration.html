@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Mobile Specific Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="css/montserrat-font.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"
+    />
+    <!-- Main Style Css -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico" />
+    <link rel="stylesheet" href="css/registrationStyle.css" />
+    <link rel="stylesheet" href="css/popup.css" />
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/gradelevel.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCJUGkfS8YTyFl5bN78CixkhNi4ms4l2IU",
+        authDomain: "enrollment-ac134.firebaseapp.com",
+        projectId: "enrollment-ac134",
+        storageBucket: "enrollment-ac134.appspot.com",
+        messagingSenderId: "798580850040",
+        appId: "1:798580850040:web:705c6549a2922e6cd09c8d",
+        measurementId: "G-SF9282GWW4",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  </head>
+  <body class="form-v10">
+    <div class="page-content">
+      <div class="form-v10-content">
+        <form class="form-detail" method="post" id="myform">
+          <div class="form-left">
+            <h2>General Infomation</h2>
+            <!-- <div class="form-row">
+              <select name="title">
+                <option class="option" value="title">Title</option>
+                <option class="option" value="businessman">Businessman</option>
+                <option class="option" value="reporter">Reporter</option>
+                <option class="option" value="secretary">Secretary</option>
+              </select>
+              <span class="select-btn">
+                <i class="zmdi zmdi-chevron-down"></i>
+              </span>
+            </div> -->
+            <div class="form-group">
+              <div class="form-row form-row-1">
+                <input
+                  type="text"
+                  name="first_name"
+                  id="first_name"
+                  class="input-text"
+                  placeholder="First Name"
+                />
+              </div>
+              <div class="form-row form-row-2">
+                <input
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  class="input-text"
+                  placeholder="Last Name"
+                />
+              </div>
+            </div>
+            <!-- <div class="form-row">
+              <select name="position">
+                <option value="position" selected disabled>Course</option>
+                <option value="position">Position</option>
+                <option value="director">Director</option>
+                <option value="manager">Manager</option>
+                <option value="employee">Employee</option>
+              </select>
+              <span class="select-btn">
+                <i class="zmdi zmdi-chevron-down"></i>
+              </span>
+            </div> -->
+            <div class="form-row">
+              <input
+                type="text"
+                name="company"
+                class="company"
+                id="school"
+                placeholder="Previous School Attended"
+              />
+            </div>
+            <div class="form-group">
+              <div class="form-row form-row-3">
+                <input
+                  type="number"
+                  name="business"
+                  class="business"
+                  id="age"
+                  placeholder="Age"
+                />
+              </div>
+              <div class="form-row form-row-4">
+                <select id="gradeLevel" name="employees"></select>
+                <span class="select-btn">
+                  <i class="zmdi zmdi-chevron-down"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-right">
+            <h2>Contact Details</h2>
+            <div class="form-row">
+              <input
+                type="text"
+                name="street"
+                class="street"
+                id="street"
+                placeholder="Street, House No."
+              />
+            </div>
+            <div class="form-row">
+              <input
+                type="text"
+                name="additional"
+                class="additional"
+                id="brgy"
+                placeholder="Brgy."
+              />
+            </div>
+            <div class="form-row">
+              <input
+                type="text"
+                name="additional"
+                class="additional"
+                id="additional"
+                placeholder="Additional Information"
+              />
+            </div>
+            <div class="form-row">
+              <input
+                type="text"
+                name="additional"
+                class="additional"
+                id="city"
+                placeholder="City"
+              />
+            </div>
+
+            <!-- <div class="form-row">
+              <select name="country">
+                <option value="country">Country</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="India">India</option>
+              </select>
+              <span class="select-btn">
+                <i class="zmdi zmdi-chevron-down"></i>
+              </span>
+            </div> -->
+            <div class="form-group">
+              <div class="form-row form-row-1">
+                <input
+                  type="text"
+                  name="code"
+                  class="code"
+                  id="code"
+                  placeholder="Code +"
+                  value="+63"
+                  disabled
+                />
+              </div>
+              <div class="form-row form-row-2">
+                <input
+                  type="text"
+                  name="phone"
+                  class="phone"
+                  id="phone"
+                  placeholder="Ex. 946*******"
+                  pattern="\d*"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <input
+                type="text"
+                name="your_email"
+                id="your_email"
+                class="input-text"
+                pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div class="form-checkbox">
+              <label class="container"
+                ><p>
+                  I do accept the
+                  <a href="#popup2" class="text">Terms and Conditions</a> of
+                  your site.
+                </p>
+                <input type="checkbox" name="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="form-row-last">
+              <!-- <input
+                type="submit"
+                id="btnSubmit"
+                name="register"
+                class="register"
+                value="Enroll"
+              /> -->
+              <button
+                type="button"
+                name="btnAddToDatabase"
+                class="register"
+                id="btnAddToDatabase"
+              >
+                Enroll
+              </button>
+              <a href="./index.html"
+                ><button type="button" name="cancel" class="cancel">
+                  Cancel
+                </button></a
+              >
+              <!-- <button
+                type="button"
+                id="btnAddToDatabase"
+                name="btnAddToDatabase"
+                class="register"
+              >
+                Add
+              </button> -->
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="popup1" class="overlay">
+      <div class="popup">
+        <h2>Successful</h2>
+        <a class="close" id="btnClose" href="./index.html">&times;</a>
+        <div class="content">
+          Please check the email you have provided for validation, we will send
+          our reply during business days.
+        </div>
+      </div>
+    </div>
+    <div id="popup2" class="overlay">
+      <div class="popup2">
+        <h2>TERMS AND CONDITIONS</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+          Please read the following terms and conditions carefully before
+          enrolling in our educational institution. By proceeding with the
+          enrollment process, you acknowledge and agree to comply with these
+          terms and conditions: <br /><br />
+          Enrollment Eligibility:<br />
+          1.1. Enrollment is open to individuals who meet the specified
+          admission criteria and requirements of the educational institution.<br />
+          1.2. The institution reserves the right to accept or reject any
+          enrollment application at its discretion.<br />
+          <br /><br />
+          Enrollment Process:<br />
+          2.1. All documents and information must be submitted accurately and
+          within the specified deadlines.<br />
+          2.2. Incomplete or incorrect information may result in the rejection
+          or delay of the enrollment application.<br />
+          2.3. Any false or misleading information provided during the
+          enrollment process may lead to immediate cancellation of
+          enrollment.<br />
+          <br /><br />
+          Course Selection and Availability:<br />
+          3.1. The institution offers a range of courses, programs, and
+          subjects, subject to availability and resources.<br />
+          3.2. The institution reserves the right to modify, withdraw, or
+          replace any course or program without prior notice.<br />
+          3.3. Course availability is not guaranteed and is subject to
+          sufficient enrollment numbers and faculty availability.<br />
+          <br /><br />
+          Tuition Fees and Payments:<br />
+          4.1. Tuition fees and other related charges are determined by the
+          institution and are subject to change without prior notice.<br />
+          4.2. All fees must be paid within the specified deadlines to secure
+          enrollment and access to classes.<br />
+          4.3. Non-payment or late payment of fees may result in the
+          cancellation of enrollment or additional penalties.<br />
+          <br /><br />
+          Withdrawal and Refunds:<br />
+          5.1. Students who wish to withdraw from a course or program must
+          notify the institution in writing within the specified deadlines.<br />
+          5.2. Refunds, if applicable, will be processed according to the
+          institution's refund policy, which may vary depending on the
+          circumstances and timing of the withdrawal.<br />
+          5.3. The institution reserves the right to make changes to the refund
+          policy at any time.<br />
+          <br /><br />
+          Code of Conduct:<br />
+          6.1. Students are expected to adhere to the institution's code of
+          conduct, which includes treating fellow students, faculty, and staff
+          with respect and maintaining appropriate behavior both on and
+          off-campus.<br />
+          6.2. Violation of the code of conduct may lead to disciplinary
+          actions, including but not limited to warnings, probation, suspension,
+          or expulsion.<br />
+          <br /><br />
+          Intellectual Property:<br />
+          7.1. All course materials, including but not limited to lectures,
+          presentations, notes, and online resources, are the intellectual
+          property of the institution and are protected by copyright laws.<br />
+          7.2. Students are prohibited from reproducing, distributing, or
+          sharing course materials without explicit permission from the
+          institution.<br />
+          <br /><br />
+          Privacy and Data Protection:<br />
+          8.1. The institution collects and processes personal information
+          provided during the enrollment process in accordance with applicable
+          data protection laws and its privacy policy.<br />
+          8.2. The institution may use the collected information for
+          administrative, educational, and communication purposes related to the
+          enrollment and provision of educational services.<br />
+          <br /><br />
+          Limitation of Liability:<br />
+          9.1. The institution will make reasonable efforts to provide accurate
+          and up-to-date information and to deliver educational services as
+          described. However, it does not guarantee the accuracy, completeness,
+          or availability of information or uninterrupted access to services.<br />
+          9.2. The institution shall not be liable for any direct or indirect
+          damages, including but not limited to financial losses, arising from
+          the enrollment or participation in courses or programs.<br />
+          <br /><br />
+          Governing Law and Jurisdiction:<br />
+          10.1. These terms and conditions shall be governed by and
+          interpreted<br />
+          in accordance with the laws of [Jurisdiction].<br />
+          10.2. Any disputes arising from or in connection with these terms and
+          conditions shall be subject to the exclusive jurisdiction of the
+          courts in [Jurisdiction].<br />
+          <br /><br />
+          By enrolling in our educational institution, you acknowledge that you
+          have read, understood, and agreed to these terms and conditions. It is
+          your responsibility to regularly review any updates or changes to the
+          terms and conditions, as they may be modified by the institution at
+          its discretion.<br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
