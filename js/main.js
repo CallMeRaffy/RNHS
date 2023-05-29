@@ -19,9 +19,9 @@ const database = firebase.database();
 const ref = database.ref("Student/profile");
 
 const initialization = () => {
-  document.getElementById("btnSubmit").addEventListener("click", (e) => {
-    btnSubmit();
-  });
+//   document.getElementById("btnSubmit").addEventListener("click", (e) => {
+//     btnSubmit();
+//   });
   document.getElementById("btnClose").addEventListener("click", (e) => {
     btnSubmit();
   });
