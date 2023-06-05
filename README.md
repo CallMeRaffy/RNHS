@@ -16,6 +16,9 @@ const firebaseConfig = {
 
 }
 ```
+> Go to your firebase and select the app you have created for your website and select the settings. Scroll down and copy the provided `firebaseConfig`.
+
+
 
 if you want to edit the name of the **`parent`**
 Change the value of:
